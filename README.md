@@ -3,7 +3,7 @@
 # Hospital Management Solution 
 
 The server is hosted at https://loch-hospital-ms.onrender.com <br />
-We can access it by using the appropriate API endpoints (dicussed further in [API Design section](https://github.com/amritansh22/loch-hospital-ms/new/main?filename=README.md#api-design))
+We can access it by using the appropriate API endpoints (dicussed further in [API Design section](https://github.com/amritansh22/loch-hospital-ms/tree/main#api-design))
 <br />
 <br />
 ## DB Design 
