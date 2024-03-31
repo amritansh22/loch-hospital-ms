@@ -7,7 +7,9 @@ We can access it by using the appropriate API endpoints (dicussed further in [AP
 <br />
 <br />
 ## DB Design 
-<img width="1136" alt="Screenshot 2024-03-31 at 3 05 15 PM" src="https://github.com/amritansh22/loch-hospital-ms/assets/29978031/f1e488e3-0d39-46a2-a0b5-823cb7fd3cd2">
+
+<img width="1136" alt="Screenshot 2024-03-31 at 3 05 15 PM" src="https://github.com/amritansh22/loch-hospital-ms/assets/29978031/30732325-b9fc-4243-88a3-38b5e0949f35">
+
 
 We have created the following tables: 
   1. patients: stores information of the patients
@@ -25,15 +27,16 @@ https://loch-hospital-ms.onrender.com/swagger/
 
 We can also run the API from here. 
 
-<img width="1724" alt="Screenshot 2024-03-31 at 4 05 47 PM" src="https://github.com/amritansh22/loch-hospital-ms/assets/29978031/aa0a41c2-cad2-4846-9242-aff5c617e5fc">
 
+<img width="1724" alt="Screenshot 2024-03-31 at 4 05 47 PM" src="https://github.com/amritansh22/loch-hospital-ms/assets/29978031/ea1cfbc3-e654-4061-b4d5-c0c21dc44092">
 
 
 ## Unit Test Cases 
 
 We have written the unit test cases using the unittest library of python. 
 To run the unit test cases, please give the command `python3 -m pytest` from the root directory of this application. 
-<img width="851" alt="Screenshot 2024-03-31 at 4 05 28 PM" src="https://github.com/amritansh22/loch-hospital-ms/assets/29978031/921aa15d-8dd6-4b4c-b1a9-00f7e8d3fe77">
+<img width="851" alt="Screenshot 2024-03-31 at 4 05 28 PM" src="https://github.com/amritansh22/loch-hospital-ms/assets/29978031/d055f6e0-d267-4dc1-afc9-938ad2f89f17">
+
 
 
 ## Techincal Specifications
