@@ -1,0 +1,1095 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "Hospital Management Solution",
+      "version": "1.0.0",
+      "title": "Hospital Management Solution API documentation",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "servers": [
+      {
+        "url": "/api/"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Patients Info",
+        "description": "API set for fetching,adding and modifying patient info"
+      },
+      {
+        "name": "Patients History",
+        "description": "API set for fetching,adding and modifying patient history info"
+      },
+      {
+        "name": "Patients Appointment",
+        "description": "API set for fetching,adding and modifying patient appointment record"
+      },
+      {
+        "name": "Doctors Info",
+        "description": "API set for fetching,adding and modifying doctors info"
+      },
+      {
+        "name": "Doctors Availability Info",
+        "description": "API set for fetching,adding and modifying doctors availability info"
+      },
+      {
+        "name": "Doctor Patient Assigned",
+        "description": "API for fetching assigned patients to a doctors"
+      },
+      {
+        "name": "Department Info",
+        "description": "API set for fetching,adding and modifying department info"
+      }
+    ],
+    "paths": {
+
+      "/patient/add-patient-info/": {
+        "post": {
+          "tags": [
+            "Patients Info"
+          ],
+          "summary": "Create a new patient info record",
+          "requestBody": {
+            "description": "Create a new patient info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patientAddInfo"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/fetch-patient-info/": {
+        "get": {
+          "tags": [
+            "Patients Info"
+          ],
+          "summary": "Fetch patients info record of all patients",
+          "parameters": [
+            {
+                "name": "page_no",
+                "in": "query",
+                "description": "Page number",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              {
+                "name": "page_size",
+                "in": "query",
+                "description": "Page size",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+              },
+              {
+                "name": "patient_email",
+                "in": "query",
+                "description": "filter by email value",
+                "required": true,
+                "type": "string",
+                "example": "user@example"
+              }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/fetch-patient-info/{patient_id}": {
+        "get": {
+          "tags": [
+            "Patients Info"
+          ],
+          "summary": "Fetch patients info record of a particular patient by id",
+          "parameters": [
+            {
+                "name": "patient_id",
+                "in": "path",
+                "description": "ID of the patient to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 2
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/modify-patient-info/{patient_id}": {
+        "put": {
+          "tags": [
+            "Patients Info"
+          ],
+          "summary": "Modify patient information by ID",
+          "parameters": [
+            {
+              "name": "patient_id",
+              "in": "path",
+              "description": "ID of the patient to modify",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          ],
+          "requestBody": {
+            "description": "Edit a patient info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patientEditInfo"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "",
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+
+      "/patient/add-patient-history/": {
+        "post": {
+          "tags": [
+            "Patients History"
+          ],
+          "summary": "Create a new patient history record",
+          "requestBody": {
+            "description": "Create a new patient history record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patientAddHistoryInfo"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/fetch-patient-history/{patient_id}": {
+        "get": {
+          "tags": [
+            "Patients History"
+          ],
+          "summary": "Fetch patients history record of a particular patient by id",
+          "parameters": [
+            {
+                "name": "patient_id",
+                "in": "path",
+                "description": "ID of the patient to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 2
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/modify-patient-history/{patient_id}": {
+        "put": {
+          "tags": [
+            "Patients History"
+          ],
+          "summary": "Modify patient history information by ID",
+          "parameters": [
+            {
+              "name": "patient_id",
+              "in": "path",
+              "description": "ID of the patient to modify",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          ],
+          "requestBody": {
+            "description": "Edit a patient history record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patientEditHistoryInfo"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "",
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+
+      "/patient/add-patient-appointment/": {
+        "post": {
+          "tags": [
+            "Patients Appointment"
+          ],
+          "summary": "Create a new patient history appointment record",
+          "requestBody": {
+            "description": "Create a new patient appointment record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patientAddAppointment"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/fetch-patient-appointment/{patient_id}": {
+        "get": {
+          "tags": [
+            "Patients Appointment"
+          ],
+          "summary": "Fetch patients appointment record of a particular patient by id",
+          "parameters": [
+            {
+                "name": "patient_id",
+                "in": "path",
+                "description": "ID of the patient to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/patient/modify-patient-appointment/{patient_id}": {
+        "put": {
+          "tags": [
+            "Patients Appointment"
+          ],
+          "summary": "Modify patient appointment information by ID",
+          "parameters": [
+            {
+              "name": "patient_id",
+              "in": "path",
+              "description": "ID of the patient to modify",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          ],
+          "requestBody": {
+            "description": "Edit a patient appointment record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patientEditAppointment"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "",
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+
+
+      "/doctor/add-doctor-info/": {
+        "post": {
+          "tags": [
+            "Doctors Info"
+          ],
+          "summary": "Create a new doctor info record",
+          "requestBody": {
+            "description": "Create a new doctor info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/doctorAddInfo"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/doctor/fetch-doctor-info/": {
+        "get": {
+          "tags": [
+            "Doctors Info"
+          ],
+          "summary": "Fetch doctor info record of all doctors",
+          "parameters": [
+            {
+                "name": "page_no",
+                "in": "query",
+                "description": "Page number",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              {
+                "name": "page_size",
+                "in": "query",
+                "description": "Page size",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+              },
+              {
+                "name": "doctor_email",
+                "in": "query",
+                "description": "filter by email value",
+                "required": true,
+                "type": "string",
+                "example": "user@example"
+              }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/doctor/fetch-doctor-info/{doctor_id}": {
+        "get": {
+          "tags": [
+            "Doctors Info"
+          ],
+          "summary": "Fetch doctor info record of a particular doctor by id",
+          "parameters": [
+            {
+                "name": "doctor_id",
+                "in": "path",
+                "description": "ID of the doctor to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 2
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/doctor/modify-doctor-info/{doctor_id}": {
+        "put": {
+          "tags": [
+            "Doctors Info"
+          ],
+          "summary": "Modify doctor information by ID",
+          "parameters": [
+            {
+              "name": "doctor_id",
+              "in": "path",
+              "description": "ID of the doctor to modify",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          ],
+          "requestBody": {
+            "description": "Edit a doctor info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/doctorEditInfo"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "",
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+
+      "/doctor/add-doctor-availability/": {
+        "post": {
+          "tags": [
+            "Doctors Availability Info"
+          ],
+          "summary": "Create a new doctor availability record",
+          "requestBody": {
+            "description": "Create a new doctor availability record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/doctorAddAvailability"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/doctor/fetch-doctor-availability/{doctor_id}": {
+        "get": {
+          "tags": [
+            "Doctors Availability Info"
+          ],
+          "summary": "Fetch docotor availability info record of a particular doctor by id",
+          "parameters": [
+            {
+                "name": "doctor_id",
+                "in": "path",
+                "description": "ID of the doctor to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 2
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/doctor/modify-doctor-availability/{doctor_id}": {
+        "put": {
+          "tags": [
+            "Doctors Availability Info"
+          ],
+          "summary": "Modify doctor availability information by ID",
+          "parameters": [
+            {
+              "name": "doctor_id",
+              "in": "path",
+              "description": "ID of the doctor to modify",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          ],
+          "requestBody": {
+            "description": "Edit a doctor availability info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/doctorEditAvailability"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "",
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+
+      "/doctor/fetch-assigned-patients/{doctor_id}": {
+        "get": {
+          "tags": [
+            "Doctor Patient Assigned"
+          ],
+          "summary": "Fetch patients assigned to a particular doctor by id",
+          "parameters": [
+            {
+                "name": "doctor_id",
+                "in": "path",
+                "description": "ID of the doctor to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 2
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+
+
+      "/department/add-department-info/": {
+        "post": {
+          "tags": [
+            "Department Info"
+          ],
+          "summary": "Create a new department info record",
+          "requestBody": {
+            "description": "Create a new department info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departmentAddInfo"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/department/fetch-department-info/": {
+        "get": {
+          "tags": [
+            "Department Info"
+          ],
+          "summary": "Fetch department info record of all department",
+          "parameters": [
+            {
+                "name": "page_no",
+                "in": "query",
+                "description": "Page number",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              {
+                "name": "page_size",
+                "in": "query",
+                "description": "Page size",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+              },
+              {
+                "name": "department_name",
+                "in": "query",
+                "description": "filter by department name value",
+                "required": true,
+                "type": "string",
+                "example": "Radiology"
+              }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/department/fetch-department-info/{department_id}": {
+        "get": {
+          "tags": [
+            "Department Info"
+          ],
+          "summary": "Fetch department info record of a particular department by id",
+          "parameters": [
+            {
+                "name": "department_id",
+                "in": "path",
+                "description": "ID of the department to fetch",
+                "required": true,
+                "type": "integer",
+                "format": "int32",
+                "example": 2
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/department/modify-department-info/{department_id}": {
+        "put": {
+          "tags": [
+            "Department Info"
+          ],
+          "summary": "Modify department information by ID",
+          "parameters": [
+            {
+              "name": "department_id",
+              "in": "path",
+              "description": "ID of the department to modify",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          ],
+          "requestBody": {
+            "description": "Edit a department info record",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/departmentEditInfo"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "",
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+
+    },
+    "components": {
+      "schemas": {
+        "patientAddInfo": {
+          "type": "object",
+          "properties": {
+            "gender": {
+              "type": "string",
+              "format": "string",
+              "example": "Male"
+
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "age": {
+                "type": "number",
+                "format": "number",
+                "example": 40
+            },
+            "name": {
+                "type": "string",
+                "format": "string",
+                "example": "John Doe"
+            },
+            "phone": {
+                "type": "string",
+                "format": "string",
+                "example": "+91 12345678"
+            }
+          }
+        },
+        "patientGetInfo": {
+            "type": "object",
+            "properties": {
+              "page_no": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 0
+              },
+              "page_size": {
+                "type": "number",
+                "format": "number",
+                "example": 1
+             }
+            }
+          },
+        "patientEditInfo": {
+            "type": "object",
+          "properties": {
+            "gender": {
+              "type": "string",
+              "format": "string",
+              "example": "Female"
+
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "age": {
+                "type": "number",
+                "format": "number",
+                "example": 30
+            },
+            "name": {
+                "type": "string",
+                "format": "string",
+                "example": "Doe John"
+            },
+            "phone": {
+                "type": "string",
+                "format": "string",
+                "example": "+91 8765432"
+            }
+          }
+        },
+
+        "patientAddHistoryInfo": {
+            "type": "object",
+            "properties": {
+              "diagnosis": {
+                "type": "string",
+                "format": "string",
+                "example": "The patient is having mild fever."
+  
+              },
+              "doctor_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 1
+              },
+              "patient_id": {
+                "type": "number",
+                "format": "number",
+                "example": 1
+              },
+              "appointment_time": {
+                "type": "number",
+                "format": "number",
+                "example": 1711813215
+              },
+              "allergies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": ["Peanut", "Jaggery"]
+              },
+              "medications": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": ["Isobufren", "Isomorphin"]
+              }
+            }
+        },
+        "patientEditHistoryInfo": {
+            "type": "object",
+            "properties": {
+              "diagnosis": {
+                "type": "string",
+                "format": "string",
+                "example": "The patient is having high fever."
+  
+              },
+              "doctor_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 1
+              },
+              "appointment_time": {
+                "type": "number",
+                "format": "number",
+                "example": 1711813192
+              },
+              "allergies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": ["Sugar"]
+              },
+              "medications": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": ["Azithromycin"]
+              }
+            }
+        },
+
+        "patientAddAppointment": {
+            "type": "object",
+            "properties": {
+              "doctor_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 1
+              },
+              "patient_id": {
+                "type": "number",
+                "format": "number",
+                "example": 1
+              },
+              "appointment_time": {
+                "type": "number",
+                "format": "number",
+                "example": 1711813215
+              }
+            }
+        },
+        "patientEditAppointment": {
+            "type": "object",
+            "properties": {
+              "doctor_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 1
+              },
+              "patient_id": {
+                "type": "number",
+                "format": "number",
+                "example": 1
+            },
+              "appointment_time": {
+                "type": "number",
+                "format": "number",
+                "example": 1711813192
+              }
+            }
+        },
+
+        "doctorAddInfo": {
+            "type": "object",
+            "properties": {
+              "department_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 1
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "name": {
+                "type": "string",
+                "format": "string",
+                "example": "John Doe"
+              },
+              "phone": {
+                "type": "string",
+                "format": "string",
+                "example": "+91 12345678"
+              },
+              "specialization": {
+                "type": "string",
+                "format": "string",
+                "example": "Cardiologist"
+              }
+            }
+        },
+        "doctorEditInfo": {
+            "type": "object",
+            "properties": {
+                "department_id": {
+                    "type": "number",
+                    "format": "number",
+                    "example": 1
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "name": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "John Doe"
+                },
+                "phone": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "+91 12345678"
+                },
+                "specialization": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "Pulmonologist"
+                }
+              }
+        },
+        "doctorAddAvailability": {
+            "type": "object",
+            "properties": {
+              "doctor_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 1
+              },
+              "unavailabile_times": {
+                "type": "array",
+                "items": {
+                "type": "string"
+                },
+                "example": ["1711818058", "1711869749"]
+              },
+              "available_times": {
+                "type": "string",
+                "format":"string",
+                "example": [
+                      {"1": ["1000", "1700"]},
+                      {"2": ["1000", "1700"]},
+                      {"3": ["1000", "1700"]},
+                      {"4": ["1000", "1700"]},
+                      {"5": ["1000", "1500"]}
+                    ]                  
+              }
+            }
+        },
+        "doctorEditAvailability": {
+            "type": "object",
+            "properties": {
+              "doctor_id": {
+                  "type": "number",
+                  "format": "number",
+                  "example": 2
+              }
+            }
+        },
+
+
+        "departmentAddInfo": {
+            "type": "object",
+            "properties": {
+              "department_name": {
+                "type": "string",
+                "format": "string",
+                "example": "Radiology"
+              },
+              "services":{
+                "type": "array",
+                "items": {
+                "type": "string"
+                },
+                "example": ["MRI", "CT SCAN"]
+              }
+            }
+        },
+        "departmentEditInfo": {
+            "type": "object",
+            "properties": {
+              "services":{
+                "type": "array",
+                "items": {
+                "type": "string"
+                },
+                "example": ["MRI", "CT SCAN", "UltraSound"]
+              }
+            }
+        }
+
+      }
+    }
+  }
